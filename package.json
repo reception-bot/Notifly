@@ -1,0 +1,40 @@
+{
+  "name": "reception",
+  "version": "1.0.0",
+  "description": "receptionst bot that connects to slack for reinforcment project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --config webpack.config.js --watch && webpack-dev-server -d",
+    "dev": "webpack-dev-server -d",
+    "build": "webpack --config webpack.config.js --watch",
+    "dev-start": "nodemon server.js"
+  },
+  "keywords": [
+    "typescript",
+    "express.js",
+    "SQL",
+    "node.js",
+    "react.js"
+  ],
+  "author": "drew nguyen",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.136",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.5",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.0.4",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  }
+}
