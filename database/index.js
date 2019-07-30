@@ -1,7 +1,6 @@
 const { Pool } = require("pg");
 //change the url to use env varibales
-let url =
-  "postgres://upmmlprv:jEC0RitC03dvN3c64lvsJP2rIbPvVG9J@raja.db.elephantsql.com:5432/upmmlprv";
+let url = "";
 const pool = new Pool({
   connectionString: url
 });
