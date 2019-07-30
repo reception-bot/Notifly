@@ -3,19 +3,19 @@ const { Pool } = require("pg");
 let url = "postgres://qvgmlczt:XBaX9s...@raja.db.elephantsql.com:5432/qvgmlczt";
 const pool = new Pool({
   coconnectionString: u
-})});
+});
 
 // creating table of visitors
 pool.query(err, result) => {
   if(err) throw err;
-  console.log()visitrs table created", result);
-});
+  console.log("visitrs table created", result);
+};
 
 //creating table of admin/pin
-poerr, result) => {
+po(err, result) => {
    if (err) throw err;
     console.log( admin table reated", result);
-  });
+  };
 
 //creating table for slack
 pool.query()CREATE TABLerr, result) => {
