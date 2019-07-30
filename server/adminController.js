@@ -1,4 +1,4 @@
-const db = require("./database/index.js");
+const db = require("../database/index");
 
 module.exports = {
   //sent from use acknowledging the signed person
