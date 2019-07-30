@@ -1,7 +1,7 @@
 const { Pool } = require("pg");
+require("dotenv").config();
 //change the url to use env varibales
-let url =
-  "postgres://upmmlprv:jEC0RitC03dvN3c64lvsJP2rIbPvVG9J@raja.db.elephantsql.com:5432/upmmlprv";
+let url = `${process.env.DB_URL}`;
 const pool = new Pool({
   connectionString: url
 });
