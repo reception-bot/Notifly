@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const app = express();
+const adminController = require('./adminController')
+const visitorController = require('./visitorController')
 
 // This serves static files from root directory
 app.use(express.static(__dirname));
@@ -13,11 +15,14 @@ app.get(["/", "/index.html"], (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
-app.get("/api/adminData", (req, res) => {});
+app.post("/api/adminData", adminController.getAdminData, (req, res) => {
+  return res.status(200).json(res.locals.result)
+});
 
-app.post("/api/postNewAdmin", (req, res) => {
+app.post("/api/postNewAdmin", adminController.postNewAdmin, (req, res) => {
   let event = req.body;
   console.log("new admin:", event);
+  return res.status(200).json(res.locals.result)
 });
 
 /**
@@ -25,9 +30,10 @@ app.post("/api/postNewAdmin", (req, res) => {
  * save to DB
  * use websocket to communicate
  */
-app.post("/api/postResponse", (req, res) => {
+app.post("/api/postResponse", adminController.postResponse, (req, res) => {
   let event = req.body;
   console.log("post response:", event);
+  return res.status(200).json(res.locals.result)
 });
 
 /**
@@ -35,9 +41,10 @@ app.post("/api/postResponse", (req, res) => {
  * save to DB
  * error handling
  */
-app.post("/api/postVisitorData", (req, res) => {
+app.post("/api/postVisitorData", visitorController.postVisitor, (req, res) => {
   let event = req.body;
   console.log("new visitor:", event);
+  return res.status(200).json(res.locals.result)
 });
 
 const server = app.listen(3000, () => {

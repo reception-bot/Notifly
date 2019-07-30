@@ -1,11 +1,11 @@
-const db = require("./database/index.js");
+const db = require("../database/index.js");
 
 module.exports = {
   //sent from use acknowledging the signed person
   postResponse(req, res, next) {
     const queryString =
       "INSERT INTO signin (visitor_id, admin_id, date) VALUES ($1, $2, $3) RETURNING *";
-    const values = [req.body.visitor, req.body.admin, req.body.date];
+    const values = [req.body.visitor_id, req.body.admin_id, req.body.date];
     db.query(queryString, values, (err, result) => {
       if (err) {
         return err;
@@ -16,7 +16,7 @@ module.exports = {
   },
 
   //admin login with pin
-  postAdminData(req, res, next) {
+  getAdminData(req, res, next) {
     const queryString = "SELECT username FROM admin WHERE pin = $1";
     const values = [req.body.pin];
     db.query(queryString, values, (err, result) => {
