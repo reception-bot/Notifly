@@ -8,7 +8,7 @@ const pool = new Pool({
 
 //create table visitor
 pool.query(
-  "CREATE TABLE IF NOT EXISTS visitors (_id SERIAL PRIMARY KEY, fisrtname VARCHAR, lastname VARCHAR, reason VARCHAR, date TIMESTAMP)",
+  "CREATE TABLE IF NOT EXISTS visitors (_id SERIAL PRIMARY KEY, firstname VARCHAR, lastname VARCHAR, reason VARCHAR, date TIMESTAMP)",
   (err, result) => {
     if (err) throw err;
     else console.log("visitors table created", result);
