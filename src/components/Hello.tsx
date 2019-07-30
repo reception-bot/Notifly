@@ -7,7 +7,7 @@ export interface HelloProps {
 
 export const Hello = (props: HelloProps) => (
   <h1>
-    hello viasdfdsl from this {props.compiler} and{" "}
+    goodbye adsfadsf{props.compiler} and{" "}
     {props.framework}!
   </h1>
 );
