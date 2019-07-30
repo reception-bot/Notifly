@@ -1,7 +1,15 @@
 var path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "production",
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "index.html"
+    })
+  ],
 
   // Enable sourcemaps for debugging webpack's output.
   devtool: "source-map",
