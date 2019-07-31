@@ -8,12 +8,17 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
   const [lastName, setLastName] = React.useState("");
   const [event, setEvent] = React.useState(props.location.state.type);
 
+  // used to convert JS date to SQL timestamp type
   const checkIn = () => {
+    const date = new Date()
+      .toISOString()
+      .slice(0, 19)
+      .replace("T", " ");
     const data = {
       firstname: firstName,
       lastname: lastName,
       reason: event,
-      date: Date.now()
+      date: date
     };
     console.log(`payload: ${JSON.stringify(data)}`);
     fetch("/api/postVisitorData", {
@@ -51,7 +56,7 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
         <input type="submit" onClick={checkIn} value="done" />
       </Link>
       <Link to="/">
-        <Button buttonName="Back" />
+        <button>Back</button>
       </Link>
     </div>
   );
