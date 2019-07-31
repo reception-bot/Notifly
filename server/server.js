@@ -4,7 +4,10 @@ const fs = require("fs");
 const app = express();
 const adminController = require("./adminController");
 const visitorController = require("./visitorController");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 62084ddd48c3bc080b5d0795b85579fb44963b56
 // This serves static files from root directory
 app.use(express.static(__dirname));
 
