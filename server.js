@@ -36,7 +36,7 @@ app.post("/api/postNewAdmin", adminController.postNewAdmin, (req, res) => {
  * save to DB
  * use websocket to communicate
  */
-app.post("/api/postResponse", adminController.postResponse, (req, res) => {
+app.post("/api/postResponse", adminController.postResponse, slackController.updateSlackMessage, (req, res) => {
   let event = req.body;
   console.log("post response:", event);
   return res.status(200).json(res.locals.result);
@@ -57,15 +57,6 @@ app.post(
     return res.status(200).json(res.locals.result);
   }
 );
-
-/**
- * update Slack message upon click
- */
-app.post("/api/visitor", slackController.updateSlackMessage, (req, res) => {
-  let event = req.body;
-  console.log("new visitor:", event);
-  return res.status(200).json(res.locals.result);
-});
 
 const server = app.listen(3000, () => {
   const host = server.address().address;

@@ -33,6 +33,14 @@ pool.query(
   }
 );
 
+pool.query(
+  "CREATE TABLE IF NOT EXISTS staff (_id SERIAL PRIMARY KEY, username VARCHAR)",
+  (err, result) => {
+    if (err) throw err;
+    else console.log("staff table created", result);
+  }
+);
+
 module.exports = {
   query: (text, params, callback) => {
     return pool.query(text, params, callback);
