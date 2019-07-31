@@ -1,6 +1,7 @@
 const { Pool } = require("pg");
+require("dotenv").config();
 //change the url to use env varibales
-let url = "";
+let url = `${process.env.DB_URL}`;
 const pool = new Pool({
   connectionString: url
 });
@@ -12,7 +13,7 @@ pool.query(
     if (err) throw err;
     else console.log("visitors table created", result);
   }
-);
+)
 
 //create table admin
 pool.query(
