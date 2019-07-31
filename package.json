@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --config webpack.config.js --watch && webpack-dev-server -d",
     "dev": "webpack-dev-server -d",
-    "build": "webpack --config webpack.config.js --watch"
+    "build": "webpack --config webpack.config.js --watch",
+    "server-dev": "nodemon server/server.js"
   },
   "keywords": [
     "typescript",
@@ -32,6 +33,7 @@
     "@types/lodash": "^4.14.136",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.5",
+    "dotenv": "^8.0.0",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.0.4",
     "ts-node": "^8.3.0",

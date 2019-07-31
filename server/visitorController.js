@@ -1,4 +1,4 @@
-const db = require("../database/index.js");
+const db = require("../database/index");
 
 module.exports = {
   //post visitor comes from the main page when visitor signs up.
