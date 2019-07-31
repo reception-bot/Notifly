@@ -1,15 +1,10 @@
 import * as React from "react";
 
 function Button(props: any) {
+  console.log(props);
   return (
     <div>
-      <button
-        onClick={e => {
-          props.Click(e);
-        }}
-      >
-        {props.buttonName}
-      </button>
+      <button>{props.buttonName}</button>
     </div>
   );
 }
