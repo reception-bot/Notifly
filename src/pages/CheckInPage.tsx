@@ -6,11 +6,18 @@ import Input from "../components/Input";
 const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
+  const [event, setEvent] = React.useState(props.location.state.type);
 
-  React.useEffect(() => {
-    console.log(firstName);
-    console.log(lastName);
-  });
+  // React.useEffect(() => {
+  //   console.log(firstName);
+  //   console.log(lastName);
+  //   console.log(event);
+  // });
+
+  const checkIn = () => {
+    console.log(firstName + lastName + event);
+  };
+
   return (
     <div>
       <p>please type ur name</p>
@@ -28,7 +35,7 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
         onChange={e => setLastName(e.target.value)}
       />
       <Link to="/finish">
-        <Button buttonName="Done" />
+        <input type="submit" onClick={checkIn} value="done" />
       </Link>
       <Link to="/">
         <Button buttonName="Back" />

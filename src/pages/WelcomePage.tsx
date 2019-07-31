@@ -13,16 +13,16 @@ function WelcomePage(props: any) {
   return (
     <div>
       <Header header1={state.head1} header2={state.head2} />
-      <Link to="/checkin">
+      <Link to={{ pathname: "/checkin", state: { type: "Interview" } }}>
         <Button buttonName="Interview" />
       </Link>
-      <Link to="/checkin">
+      <Link to={{ pathname: "/checkin", state: { type: "Meeting" } }}>
         <Button buttonName="Meeting" />
       </Link>
-      <Link to="/checkin">
+      <Link to={{ pathname: "/checkin", state: { type: "Other" } }}>
         <Button buttonName="Other" />
       </Link>
-      <Link to="/checkin">
+      <Link to={{ pathname: "/checkin", state: { type: "Delivery" } }}>
         <Button buttonName="Delivery" />
       </Link>
     </div>
