@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const app = express();
+let PORT = process.env.PORT || 3000;
 const adminController = require("./server/adminController");
 const authController = require("./server/authController");
 const visitorController = require("./server/visitorController");
@@ -58,7 +59,7 @@ app.post(
   }
 );
 
-const server = app.listen(3000, () => {
+const server = app.listen(PORT, () => {
   const host = server.address().address;
   const port = server.address().port;
 
