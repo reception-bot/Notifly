@@ -1,29 +1,48 @@
 const { Pool } = require("pg");
+require("dotenv").config();
 //change the url to use env varibales
-let url = "postgres://qvgmlczt:XBaX9s...@raja.db.elephantsql.com:5432/qvgmlczt";
+let url = `${process.env.DB_URL}`;
 const pool = new Pool({
-  coconnectionString: u
-})});
-
-// creating table of visitors
-pool.query(err, result) => {
-  if(err) throw err;
-  console.log()visitrs table created", result);
+  connectionString: url
 });
 
-//creating table of admin/pin
-poerr, result) => {
-   if (err) throw err;
-    console.log( admin table reated", result);
-  });
+//create table visitor
+pool.query(
+  "CREATE TABLE IF NOT EXISTS visitors (_id SERIAL PRIMARY KEY, firstname VARCHAR, lastname VARCHAR, reason VARCHAR, date TIMESTAMP)",
+  (err, result) => {
+    if (err) throw err;
+    else console.log("visitors table created", result);
+  }
+);
 
-//creating table for slack
-pool.query()CREATE TABLerr, result) => {
-    if(err) throw err;
-   onsole.log("signin table created", result);
-  );
+//create table admin
+pool.query(
+  "CREATE TABLE IF NOT EXISTS admin (_id SERIAL PRIMARY KEY, pin VARCHAR, username VARCHAR, email VARCHAR)",
+  (err, result) => {
+    if (err) throw err;
+    else console.log("admin table created", result);
+  }
+);
 
-////exporting query function for server requests
-module.expoery: (text, params, callback) => {
-    return pool.query(text, params, callback)IAL PRIMARY KEY, visitor_id INTEGER, admin_id INTEGER, date TIMESTAMP)",
-}};
+//create table signin
+pool.query(
+  "CREATE TABLE IF NOT EXISTS signin (_id SERIAL PRIMARY KEY, visitor_id VARCHAR, admin_id VARCHAR, date TIMESTAMP)",
+  (err, result) => {
+    if (err) throw err;
+    else console.log("signin table created", result);
+  }
+);
+
+pool.query(
+  "CREATE TABLE IF NOT EXISTS staff (_id SERIAL PRIMARY KEY, username VARCHAR)",
+  (err, result) => {
+    if (err) throw err;
+    else console.log("staff table created", result);
+  }
+);
+
+module.exports = {
+  query: (text, params, callback) => {
+    return pool.query(text, params, callback);
+  }
+};

@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --config webpack.config.js --watch && webpack-dev-server -d",
     "dev": "webpack-dev-server -d",
-    "build": "webpack --config webpack.config.js --watch",
-    "dev-start": "nodemon server.js"
+    "build": "webpack --config webpack.config.js",
+    "server-dev": "nodemon server.js"
   },
   "keywords": [
     "typescript",
@@ -20,15 +20,23 @@
   "author": "drew nguyen",
   "license": "ISC",
   "dependencies": {
+    "@types/react-router-dom": "^4.3.4",
+    "axios": "^0.19.0",
     "body-parser": "^1.19.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "html-webpack-plugin": "^3.2.0",
+    "pg": "^7.12.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.136",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.5",
+    "dotenv": "^8.0.0",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.0.4",
     "ts-node": "^8.3.0",
