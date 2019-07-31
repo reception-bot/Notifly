@@ -3,11 +3,8 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 const app = express();
 const adminController = require("./adminController");
+const authController = require("./authController")
 const visitorController = require("./visitorController");
-<<<<<<< HEAD
-
-=======
->>>>>>> 62084ddd48c3bc080b5d0795b85579fb44963b56
 // This serves static files from root directory
 app.use(express.static(__dirname));
 
@@ -18,8 +15,8 @@ app.get(["/", "/index.html"], (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
-app.post("/api/adminData", adminController.getAdminData, (req, res) => {
-  return res.status(200).json(res.locals.result);
+app.post("/api/adminData", authController.verifyAdmin, adminController.getAdminData, (req, res) => {
+  return res.redirect('/')
 });
 
 app.post("/api/postNewAdmin", adminController.postNewAdmin, (req, res) => {

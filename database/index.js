@@ -13,7 +13,7 @@ pool.query(
     if (err) throw err;
     else console.log("visitors table created", result);
   }
-)
+);
 
 //create table admin
 pool.query(
