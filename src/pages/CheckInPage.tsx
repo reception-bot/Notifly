@@ -7,27 +7,29 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [event, setEvent] = React.useState(props.location.state.type);
-<<<<<<< HEAD
-
-  // React.useEffect(() => {
-  //   console.log(firstName);
-  //   console.log(lastName);
-  //   console.log(event);
-  // });
 
   const checkIn = () => {
-    console.log(firstName + lastName + event);
+    const data = {
+      firstname: firstName,
+      lastname: lastName,
+      reason: event,
+      date: Date.now()
+    };
+    console.log(`payload: ${JSON.stringify(data)}`);
+    fetch("/api/postVisitorData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(newdata => {
+        console.log("then:", newdata);
+      })
+      .catch(err => {
+        alert(err);
+      });
   };
-=======
-  
-  const checkIn = () => {
-    console.log('here',firstName + lastName + event);
-    // fetch('/', {
-    //   method:'POST'
-    //   }
-    // })
-  }
->>>>>>> 986a7f6acacd9a0513307a6322dd6f1eb1e5ddb0
 
   return (
     <div>
@@ -46,11 +48,7 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
         onChange={e => setLastName(e.target.value)}
       />
       <Link to="/finish">
-<<<<<<< HEAD
         <input type="submit" onClick={checkIn} value="done" />
-=======
-      <input type="submit" onClick={checkIn} value="done" />
->>>>>>> 986a7f6acacd9a0513307a6322dd6f1eb1e5ddb0
       </Link>
       <Link to="/">
         <Button buttonName="Back" />
