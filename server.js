@@ -2,10 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const app = express();
-const adminController = require("./adminController");
-const authController = require("./authController")
-const visitorController = require("./visitorController");
-const slackController = require("./slackController");
+const adminController = require("./server/adminController");
+const authController = require("./server/authController");
+const visitorController = require("./server/visitorController");
+const slackController = require("./server/slackController");
 // This serves static files from root directory
 app.use(express.static(__dirname));
 
@@ -16,9 +16,14 @@ app.get(["/", "/index.html"], (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
-app.post("/api/adminData", authController.verifyAdmin, adminController.getAdminData, (req, res) => {
-  return res.redirect('/')
-});
+app.post(
+  "/api/adminData",
+  authController.verifyAdmin,
+  adminController.getAdminData,
+  (req, res) => {
+    return res.redirect("/");
+  }
+);
 
 app.post("/api/postNewAdmin", adminController.postNewAdmin, (req, res) => {
   let event = req.body;
@@ -42,11 +47,16 @@ app.post("/api/postResponse", adminController.postResponse, slackController.upda
  * save to DB
  * error handling
  */
-app.post("/api/postVisitorData", visitorController.postVisitor, visitorController.postSlack, (req, res) => {
-  let event = req.body;
-  console.log("new visitor:", event);
-  return res.status(200).json(res.locals.result);
-});
+app.post(
+  "/api/postVisitorData",
+  visitorController.postVisitor,
+  visitorController.postSlack,
+  (req, res) => {
+    let event = req.body;
+    console.log("new visitor:", event);
+    return res.status(200).json(res.locals.result);
+  }
+);
 
 const server = app.listen(3000, () => {
   const host = server.address().address;
