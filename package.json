@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --config webpack.config.js --watch && webpack-dev-server -d",
     "dev": "webpack-dev-server -d",
-    "build": "webpack --config webpack.config.js && nodemon server.js",
+    "build": "webpack --config webpack.config.js",
     "build-dev": "webpack --config webpack.config.js --watch",
     "server-dev": "nodemon server.js"
   },
@@ -22,6 +22,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/react-router-dom": "^4.3.4",
+    "@types/socket.io": "^2.1.2",
     "@types/styled-components": "^4.1.18",
     "antd": "^3.20.7",
     "axios": "^0.19.0",
@@ -37,6 +38,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
+    "socket.io": "^2.2.0",
     "style-loader": "^0.23.1",
     "styled-components": "^4.3.2"
   },

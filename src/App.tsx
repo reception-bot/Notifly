@@ -7,11 +7,15 @@ import AdminPinPage from "./pages/AdminPinPage";
 import FinishPage from "./pages/FinishPage";
 
 export class App extends React.Component {
-  state = {
-    head1: "Welcome to Codesmith",
-    head2: "To check in, tap the reason for your visit:",
-    logo: ""
-  };
+  socket: any;
+  constructor(props:any){
+    super(props)
+    this.state = {
+      head1: "Welcome to Codesmith",
+      head2: "To check in, tap the reason for your visit:",
+      logo: ""
+    };
+  }
   render() {
     return (
       <Router>

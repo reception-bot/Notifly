@@ -10,6 +10,11 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
 
   // used to convert JS date to SQL timestamp type
   const checkIn = () => {
+    // if (firstName.length === 0)
+    //   return (
+    //     alert("name should be filled"),
+    //     (window.location.href = "http://localhost:3000/")
+    //   );
     const date = new Date()
       .toISOString()
       .slice(0, 19)
@@ -36,6 +41,7 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
       });
   };
 
+  let prevent = '/finish'
   return (
     <div>
       <p>please type ur name</p>
@@ -52,8 +58,9 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
         placeholder='Last Name'
         onChange={e => setLastName(e.target.value)}
       />
-      <Link to={{ pathname: "/finish", state: { type: firstName } }}>
-        <input type='submit' onClick={checkIn} value='Done' />
+      
+      <Link  to={{ pathname: prevent, state: { type: firstName } }}>
+        <input type='submit' onClick={firstName.length === 0 ? () => prevent = '/checkin': checkIn} value='Done' />
       </Link>
       <Link to='/'>
         <button>Back</button>
