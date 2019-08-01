@@ -1,6 +1,7 @@
 const db = require("../database/index");
 
 const insertSignin = (req, res, next, result) => {
+  console.log('❎', result.rows[0])
   const slack = JSON.parse(req.body.payload);
   let visitorId = result.rows[0]._id;
   let staffId = slack.user.id;
@@ -18,7 +19,8 @@ module.exports = {
   //sent from use acknowledging the signed person
   postResponse(req, res, next) {
     const slack = JSON.parse(req.body.payload);
-    console.log('👤 Slack Response:', slack);
+    // console.log('👤 Slack Response:', slack);
+  
     let visitorName = slack.original_message.text
       .match(/\*(.*?)\*/g);
     visitorName = visitorName[0]
