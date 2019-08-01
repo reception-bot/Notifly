@@ -5,8 +5,8 @@ const FinishPage: React.FunctionComponent<{}> = (props: any) => {
   // need to implement a more react-type solution
   console.log("✅", props.location.type);
   window.setTimeout(() => {
-    window.location.href = "http://localhost:3000";
-  }, 5000);
+    window.location.href = "https://notifly.herokuapp.com";
+  }, 3000);
   return (
     <FinishStyled>
       <img
