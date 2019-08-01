@@ -4,9 +4,10 @@ const axios = require('axios');
 
 module.exports = {
   updateSlackMessage(req, res, next) {
-    let message = req.body.payload.original_message;
+    const slack = JSON.parse(req.body.payload);
+    let message = slack.original_message;
     delete message.attachments[0].actions;
-    message.attachments[0].text = `@${req.body.payload.user.name} is on it`;
+    message.attachments[0].text = `@${slack.user.name} is on it`;
     return res.status(200).json(message);
   },
 };

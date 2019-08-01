@@ -1,8 +1,9 @@
 const db = require("../database/index");
 
 const insertSignin = (req, res, next, result) => {
+  const slack = JSON.parse(req.body.payload);
   let visitorId = result.rows[0]._id;
-  let staffId = req.body.payload.user.id;
+  let staffId = slack.user.id;
   let now = new Date();
   const insertSigninQuery =
     "INSERT INTO signin (visitor_id, admin_id, date) VALUES ($1, $2, $3) RETURNING *;";
@@ -16,8 +17,9 @@ const insertSignin = (req, res, next, result) => {
 module.exports = {
   //sent from use acknowledging the signed person
   postResponse(req, res, next) {
-    console.log('👤 Slack Response:', req.body);
-    let visitorName = req.body.payload.original_message.text
+    const slack = JSON.parse(req.body.payload);
+    console.log('👤 Slack Response:', slack);
+    let visitorName = slack.original_message.text
       .match(/\*(.*?)\*/g);
     visitorName = visitorName[0]
       .replace(/[*]/g, '')
@@ -27,12 +29,12 @@ module.exports = {
     db.query(findVisitorQuery, [visitorName[0], visitorName[1]], (err, findVisitorResult) => {
       if (err) return err;
       const selectUsernameQuery = 'select username from staff where _id=$1;';
-      db.query(selectUsernameQuery, [req.body.payload.user.id], (err, result) => {
+      db.query(selectUsernameQuery, [slack.user.id], (err, result) => {
         if (err) return err;
         if (result.rows[0]) {
-          if (result.rows[0].username !== req.body.payload.user.name) {
+          if (result.rows[0].username !== slack.user.name) {
             const updateUsernameQuery = 'update staff set username=$1 where _id=$2;';
-            db.query(updateUsernameQuery, [req.body.payload.user.name, req.body.payload.user.id], (err, result) => {
+            db.query(updateUsernameQuery, [slack.user.name, slack.user.id], (err, result) => {
               if (err) return err;
               insertSignin(req, res, next, findVisitorResult);
             });
@@ -41,7 +43,7 @@ module.exports = {
           }
         } else {
           const insertStaffQuery = 'insert into staff (_id, username) values ($1, $2);';
-          db.query(insertStaffQuery, [req.body.payload.user.id, req.body.payload.user.name], (err, result) => {
+          db.query(insertStaffQuery, [slack.user.id, slack.user.name], (err, result) => {
             if (err) return err;
             insertSignin(req, res, next, findVisitorResult);
           });
