@@ -61,7 +61,10 @@
 
 .submit-back {
   color: gray;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  outline: none;
+  margin: 1rem;
+  border: none;
 }
 
 /* for entire AdminPinPad div */
