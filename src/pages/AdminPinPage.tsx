@@ -9,7 +9,6 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
   const [pin, setPin] = React.useState("");
   const [redirect, setRedirect] = React.useState(false);
   const [adminData, setadminData] = React.useState([]);
-  const [focus, setFocus] = React.useState(1);
 
   const checkPin = () => {
     const data = {
@@ -22,22 +21,19 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
       },
       body: JSON.stringify(data)
     })
-    .then(res => {
-      if(res.status < 300) return res.json();
-      else throw new Error('Wrong Pin');
-    })
-    .then(res => {
-      setadminData(res);
-      setRedirect(true);
+      .then(res => {
+        if (res.status < 300) return res.json();
+        else throw new Error("Wrong Pin");
       })
-    .catch(err => {
-      alert(err);
-    });
+      .then(res => {
+        setadminData(res);
+        setRedirect(true);
+      })
+      .catch(err => {
+        alert(err);
+      });
   };
-  
-  interface KeyboardEvent extends EventModifierInit {
-    key?: string;
-  }
+
   // for changing input focus
   const moveOnMax = function(field: any, nextFieldID: any) {
     console.log("AGGGGGH");
@@ -45,6 +41,8 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
       document.getElementById(nextFieldID).focus();
     }
   };
+
+  // animation
   const pinPadMotion = {
     hidden: { y: -10, opacity: 0 },
     visible: {
@@ -53,7 +51,7 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
     }
   };
   if (redirect) {
-    return <AdminPage tableData={adminData}/>;
+    return <AdminPage tableData={adminData} />;
   } else {
     return (
       <motion.div

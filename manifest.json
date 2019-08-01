@@ -1,0 +1,17 @@
+{
+  "name": "ReceptionBot",
+  "theme_color": "#0a5998",
+  "background_color": "#ffffff",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "Scope": "/",
+  "start_url": "/.",
+  "icons": [
+    {
+      "src": "/src/images/apple-touch-icon-blue.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "splash_pages": null
+}
