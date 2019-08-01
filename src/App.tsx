@@ -15,12 +15,12 @@ export class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div className='App'>
           <Switch>
-            <Route exact path="/checkin" component={CheckInPage} />
-            <Route exact path="/" component={WelcomePage} />
-            <Route exact path="/finish" component={FinishPage} />
-            <Route exact path="/admin" component={AdminPinPage} />
+            <Route exact path='/checkin' component={CheckInPage} />
+            <Route exact path='/' component={WelcomePage} />
+            <Route exact path='/finish' component={FinishPage} />
+            <Route exact path='/admin' component={AdminPinPage} />
           </Switch>
         </div>
       </Router>
