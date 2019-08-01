@@ -29,8 +29,8 @@ module.exports = {
   postSlack(req, res, next) {
     const data = slackMessage(req.body, false);
     // console.log('SLACK', process.env.SLACK_URL);
-    axios.post(process.env.SLACK_URL, data)
-      .then(data => /*console.log('slack response:', data)*/);
+    axios.post(process.env.SLACK_URL, data);
+      // .then(data => console.log('slack response:', data));
     return next();
   }
 };
