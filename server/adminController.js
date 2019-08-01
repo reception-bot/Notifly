@@ -16,6 +16,7 @@ const insertSignin = (req, res, next, result) => {
 module.exports = {
   //sent from use acknowledging the signed person
   postResponse(req, res, next) {
+    console.log('👤 Slack Response:', req.body);
     let visitorName = req.body.payload.original_message.text
       .match(/\*(.*?)\*/g);
     visitorName = visitorName[0]
