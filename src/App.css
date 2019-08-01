@@ -11,7 +11,9 @@ img {
 }
 
 nav {
-  position: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
   font-size: 31px;
   color: rgba(132,142,166,0.50);
   display: flex;
@@ -64,6 +66,7 @@ a.primary, input[type=submit], button {
   border-radius: 53px;
   border: none;
   padding: 0;
+  -webkit-appearance: none;
 }
 
 a.secondary {

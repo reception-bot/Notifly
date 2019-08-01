@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link, Redirect, withRouter } from "react-router-dom";
+import Navigation from "../components/Navigation";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import Input from "../components/Input";
@@ -57,6 +58,7 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
 
   return (
     <div id="checkin">
+      <Navigation />
       <Header />
       <div id="instruction">
         <h4>{event}</h4>

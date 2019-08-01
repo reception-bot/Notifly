@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import Button from "../components/Button";
+import Navigation from "../components/Navigation";
 import Header from "../components/Header";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
 
@@ -11,6 +12,7 @@ function WelcomePage(props: any) {
   };
   return (
     <div>
+      <Navigation />
       <Header />
       <h1>{state.head1}</h1>
       <h4>{state.head2}</h4>

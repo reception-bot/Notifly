@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
+import Navigation from "../components/Navigation";
 import Input from "../components/Input";
 import AdminPage from "../pages/AdminPage";
 import { motion } from "framer-motion";
@@ -65,6 +66,7 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
           default: { duration: 0.3 }
         }}
       >
+        <Navigation />
         <div className="h-1">Enter your pin</div>
         <div>
           <input
@@ -120,9 +122,6 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
           onClick={checkPin}
           value="Done"
         />
-        <Link to="/">
-          <Button buttonName="Back" />
-        </Link>
       </motion.div>
     );
   }
