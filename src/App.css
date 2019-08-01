@@ -35,7 +35,7 @@ nav a {
 }
 
 #instruction {
-  margin: 80px 0 50px;
+  margin: 80px 0 10px;
 }
 
 .b-primary {
@@ -47,6 +47,7 @@ nav a {
   margin-top: 0.5rem;
   width: 25rem;
   height: 4rem;
+  outline: none;
 }
 
 a.primary, input[type=submit], button {
@@ -98,6 +99,20 @@ h1 {
   font-weight: 500;
 }
 
+h2 {
+  font-size: 4.44em;
+  color: #091D4E;
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 4em;
+  color: #404C67;
+  margin: 20px 30px;
+  font-weight: 500;
+}
+
 h4 {
   margin: 62px auto 33px;
   font-size: 2.5rem;
@@ -112,9 +127,19 @@ h4.primary {
   color: #091D4E;
 }
 
+h4.error {
+  color: #F26E27;
+  opacity: 0;
+  transition: opacity 0.1s linear;
+}
+
 #checkin h4 {
   max-width: 100%;
   margin: 0 auto;
+}
+
+#finished img {
+  margin: 270px auto 50px;
 }
 
 header {
@@ -125,12 +150,92 @@ header {
   font-size: 2rem;
 }
 
-#pinPad{
-  border-color: rgb(54, 74, 143);
-  color: black;
+.h-1 {
+  font-weight: 200;
   font-size: 2rem;
-  width: 4rem;
-  height: 4rem;
+  margin: 1rem;
+}
+
+.submit-pin {
+  border: 3px solid rgb(54, 74, 143);
+  outline: none;
   border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 2rem;
+  border-radius: 5rem;
+  margin-top: 2rem;
+  width: 25rem;
+  height: 4rem;
+  color: rgb(54, 74, 143);
+  background: white;
+}
+
+.submit-back {
+  color: gray;
+  font-size: 1rem;
+}
+
+/* for entire AdminPinPad div */
+.pin-pad {
+  padding-top: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: auto 0; */
+  height: 75vh;
+  width: 100vw;
+  /* background: red; */
+  /* justify-content: center; */
+
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 40%, rgb(197, 202, 206) 100%);
+}
+
+.pinPad {
+  /* border-color: rgb(54, 74, 143); */
+  margin: 8px;
+  padding: 20px;
+  border: none;
+  outline: none;
+  color: black;
+  background: #e3e3e3;
+  font-size: 4rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 1rem;
   text-align: center;
+  transition: 100ms ease;
+}
+
+.pinPad:focus {
+  background: #c9c9c9;
+}
+
+.back-button {
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.h-admin {
+  font-size: 1rem;
+  font-weight: 200 !important;
+  margin: 5px;
+}
+
+.tr-header {
+  font-size: 1.2rem;
+  font-weight: 600 !important;
+}
+
+.table {
+  padding: 10px 5rem;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.content {
+  font-size: 1rem;
+  font-weight: 200 !important;
 }

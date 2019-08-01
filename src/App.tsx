@@ -1,7 +1,6 @@
 import * as React from "react";
 import "./App.css";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
-import Header from "./components/Header";
 import WelcomePage from "./pages/WelcomePage";
 import CheckInPage from "./pages/CheckInPage";
 import AdminPinPage from "./pages/AdminPinPage";

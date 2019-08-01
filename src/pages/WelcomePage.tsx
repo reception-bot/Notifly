@@ -23,7 +23,7 @@ function WelcomePage(props: any) {
       <Link to={{ pathname: "/checkin", state: { type: "Other" } }} className="primary">
         Other
       </Link>
-      <Link to={{ pathname: "/checkin", state: { type: "Delivery" } }} className="secondary">
+      <Link to={{ pathname: "/finish", state: { type: "Delivery" } }} className="secondary">
         Delivery
       </Link>
     </div>

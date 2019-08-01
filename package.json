@@ -22,18 +22,23 @@
   "license": "ISC",
   "dependencies": {
     "@types/react-router-dom": "^4.3.4",
+    "@types/styled-components": "^4.1.18",
+    "antd": "^3.20.7",
     "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.1.0",
+    "date-fns": "^1.30.1",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "framer-motion": "^1.4.2",
     "html-webpack-plugin": "^3.2.0",
     "pg": "^7.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.136",
