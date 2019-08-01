@@ -1,10 +1,11 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 import Button from "../components/Button";
 import Input from "../components/Input";
 
 const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
-  const [firstName, setFirstName] = React.useState("");
+  const [fullName, setFullName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [event, setEvent] = React.useState(props.location.state.type);
 
@@ -15,8 +16,8 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
       .slice(0, 19)
       .replace("T", " ");
     const data = {
-      firstname: firstName,
-      lastname: lastName,
+      firstname: fullName.split(' ')[0],
+      lastname: fullName.split(' ')[1],
       reason: event,
       date: date
     };
@@ -37,26 +38,20 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
   };
 
   return (
-    <div>
-      <p>please type ur name</p>
-      <div>input name and stuff here</div>
+    <div id="checkin">
+      <Header path={window.location.pathname} />
+      <div id="instruction">
+        <h4>{event}</h4>
+        <h4 className="primary">Please type your full name</h4>
+      </div>
       <input
-        name="first"
-        placeholder="First Name"
+        name="name"
+        placeholder="Full name here"
         type="text"
-        onChange={e => setFirstName(e.target.value)}
-      />
-      <input
-        name="last"
-        type="text"
-        placeholder="Last Name"
-        onChange={e => setLastName(e.target.value)}
+        onChange={e => setFullName(e.target.value)}
       />
       <Link to="/finish">
-        <input type="submit" onClick={checkIn} value="done" />
-      </Link>
-      <Link to="/">
-        <button>Back</button>
+        <input type="submit" onClick={checkIn} value="Done" />
       </Link>
     </div>
   );
