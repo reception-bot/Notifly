@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import AdminPage from "../pages/AdminPage";
+import { motion } from "framer-motion";
 
 const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
   const [pin, setPin] = React.useState("");
@@ -41,16 +42,32 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
       document.getElementById(nextFieldID).focus();
     }
   };
-
+  const pinPadMotion = {
+    hidden: { y: -10, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
   if (redirect) {
     return <AdminPage />;
   } else {
     return (
-      <div>
-        <div>PIN NUMBER</div>
-        <div className="pin-pad">
+      <motion.div
+        className="pin-pad"
+        initial="hidden"
+        animate="visible"
+        variants={pinPadMotion}
+        transition={{
+          delay: 0.3,
+          x: { type: "spring", stiffness: 500 },
+          default: { duration: 0.3 }
+        }}
+      >
+        <div className="h-1">Enter your pin</div>
+        <div>
           <input
-            type="text"
+            type="password"
             pattern="[0-9]*"
             className="pinPad"
             maxLength={1}
@@ -60,7 +77,7 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
             }}
           />
           <input
-            type="text"
+            type="password"
             maxLength={1}
             pattern="[0-9]*"
             className="pinPad"
@@ -71,7 +88,7 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
             }}
           />
           <input
-            type="text"
+            type="password"
             maxLength={1}
             pattern="[0-9]*"
             className="pinPad"
@@ -82,7 +99,7 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
             }}
           />
           <input
-            type="text"
+            type="password"
             maxLength={1}
             pattern="[0-9]*"
             className="pinPad"
@@ -92,11 +109,17 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
             }}
           />
         </div>
-        <input type="submit" onClick={checkPin} value="Done" />
+        <motion.input
+          whileTap={{ scale: 0.9 }}
+          className="submit-pin"
+          type="submit"
+          onClick={checkPin}
+          value="Done"
+        />
         <Link to="/">
           <Button buttonName="Back" />
         </Link>
-      </div>
+      </motion.div>
     );
   }
 };

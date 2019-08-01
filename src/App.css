@@ -16,6 +16,7 @@
   margin-top: 0.5rem;
   width: 25rem;
   height: 4rem;
+  outline: none;
 }
 
 #header_1 {
@@ -38,12 +39,57 @@
   font-size: 2rem;
 }
 
-.pinPad {
-  border-color: rgb(54, 74, 143);
-  color: black;
+.h-1 {
+  font-weight: 200;
   font-size: 2rem;
-  width: 4rem;
-  height: 4rem;
+  margin: 1rem;
+}
+
+.submit-pin {
+  border: 3px solid rgb(54, 74, 143);
+  outline: none;
   border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 2rem;
+  border-radius: 5rem;
+  margin-top: 2rem;
+  width: 25rem;
+  height: 4rem;
+  color: rgb(54, 74, 143);
+  background: white;
+}
+
+/* for entire AdminPinPad div */
+.pin-pad {
+  padding-top: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: auto 0; */
+  height: 100vh;
+  width: 100vw;
+  /* background: red; */
+  /* justify-content: center; */
+
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 40%, rgb(197, 202, 206) 100%);
+}
+
+.pinPad {
+  /* border-color: rgb(54, 74, 143); */
+  margin: 8px;
+  border: none;
+  outline: none;
+  color: black;
+  background: #e3e3e3;
+  font-size: 4rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 1rem;
   text-align: center;
+  transition: 100ms ease;
+}
+
+.pinPad:focus {
+  background: #c9c9c9;
 }
