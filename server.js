@@ -28,7 +28,7 @@ app.post(
 
 app.post("/api/postNewAdmin", adminController.postNewAdmin, (req, res) => {
   let event = req.body;
-  console.log("new admin:", event);
+  // console.log("new admin:", event);
   return res.status(200).json(res.locals.result);
 });
 
@@ -39,7 +39,8 @@ app.post("/api/postNewAdmin", adminController.postNewAdmin, (req, res) => {
  */
 app.post("/api/postResponse", adminController.postResponse, slackController.updateSlackMessage, (req, res) => {
   let event = req.body;
-  console.log("post response:", event);
+  // console.log("post response:", event);
+  console.log('👤 Slack Response:', event);
   return res.status(200).json(res.locals.result);
 });
 
@@ -54,7 +55,7 @@ app.post(
   visitorController.postSlack,
   (req, res) => {
     let event = req.body;
-    console.log("new visitor:", event);
+    // console.log("new visitor:", event);
     return res.status(200).json(res.locals.result);
   }
 );
