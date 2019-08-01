@@ -8,6 +8,7 @@ module.exports = {
     let message = slack.original_message;
     delete message.attachments[0].actions;
     message.attachments[0].text = `✓ <@${slack.user.id}> is on it`;
+    message.attachments[0].color = '#4CA28B';
     return res.status(200).json(message);
   },
 };
