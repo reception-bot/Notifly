@@ -58,7 +58,7 @@ module.exports = {
 
   //admin login with pin
   getAdminData(req, res, next) {
-    const queryString = "SELECT * FROM signin";
+    const queryString = 'SELECT visitors.firstname, visitors.lastname, visitors.reason, staff.username, signin.date FROM visitors JOIN signin ON visitors._id = signin.visitor_id JOIN staff ON signin.admin_id = staff._id'
     db.query(queryString, (err, result) => {
       if (err) {
         return err;

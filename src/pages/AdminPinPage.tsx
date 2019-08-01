@@ -7,9 +7,9 @@ import AdminPage from "../pages/AdminPage";
 const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
   const [pin, setPin] = React.useState("");
   const [redirect, setRedirect] = React.useState(false);
+  const [adminData, setadminData] = React.useState([]);
 
   const checkPin = () => {
-    console.log("typed pin", pin);
     const data = {
       pin: pin
     };
@@ -20,19 +20,21 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
       },
       body: JSON.stringify(data)
     })
-      .then(newdata => {
-        console.log("newdata", newdata.body);
-        if (newdata.status < 300) setRedirect(true);
-        else alert("Wrong Pin");
+    .then(res => {
+      if(res.status < 300) return res.json();
+      else throw new Error('Wrong Pin');
+    })
+    .then(res => {
+      setadminData(res);
+      setRedirect(true);
       })
-      .catch(err => {
-        console.log("caught the error");
-        alert(err);
-      });
+    .catch(err => {
+      alert(err);
+    });
   };
 
   if (redirect) {
-    return <AdminPage />;
+    return <AdminPage tableData={adminData}/>;
   } else {
     return (
       <div>
