@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import Navigation from "../components/Navigation";
 import Header from "../components/Header";
 
 const FinishPage: React.FunctionComponent<{}> = (props: any) => {
@@ -23,6 +24,7 @@ const FinishPage: React.FunctionComponent<{}> = (props: any) => {
 
   return (
     <div id="finished">
+      <Navigation />
       <Header />
       {welcome}
     </div>

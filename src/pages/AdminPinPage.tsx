@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
+import Navigation from "../components/Navigation";
 import Input from "../components/Input";
 import AdminPage from "../pages/AdminPage";
 import { motion } from "framer-motion";
@@ -71,7 +72,8 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
           x: { type: "spring", stiffness: 500 },
           default: { duration: 0.3 }
         }}>
-        <div className='h-1'>Enter your pin</div>
+        <Navigation />
+        <div className="h-1">Enter your pin</div>
         <div>
           <input
             type='password'
@@ -128,9 +130,6 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
           onClick={checkPin}
           value='Done'
         />
-        <Link to='/'>
-          <Button buttonName='Back' />
-        </Link>
       </motion.div>
     );
   }

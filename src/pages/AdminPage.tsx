@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
+import Navigation from "../components/Navigation";
 
 function AdminPage(props: any) {
   let rowsData: any = [];
@@ -17,11 +18,7 @@ function AdminPage(props: any) {
   }
   return (
     <div>
-      <div className="back-button">
-        <Link to="/">
-          <input className="submit-back" type="submit" value="< Back" />
-        </Link>
-      </div>
+      <Navigation />
       <p className="h-admin">Check-in Log</p>
       <div className="table">
         <table>
