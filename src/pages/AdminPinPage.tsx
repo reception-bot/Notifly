@@ -35,10 +35,11 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
     key?: string;
   }
   // for changing input focus
-  const fireTab = () => {
-    var evt = new KeyboardEvent("keydown", { key: "Tab" });
-    document.dispatchEvent(evt);
-    console.log("triggered");
+  const moveOnMax = function(field: any, nextFieldID: any) {
+    console.log("AGGGGGH");
+    if (field.length === 1) {
+      document.getElementById(nextFieldID).focus();
+    }
   };
 
   if (redirect) {
@@ -51,42 +52,43 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
           <input
             type="text"
             pattern="[0-9]*"
-            id="pinPad"
+            className="pinPad"
             maxLength={1}
             onChange={e => {
               setPin(e.target.value);
-              fireTab();
-            }}
-            onKeyUp={fireTab}
-          />
-          <input
-            type="text"
-            maxLength={1}
-            pattern="[0-9]*"
-            id="pinPad"
-            onChange={e => {
-              let newPin = pin.toString().concat(e.target.value);
-              setPin(newPin);
+              moveOnMax(e.target.value, "2");
             }}
           />
           <input
             type="text"
             maxLength={1}
             pattern="[0-9]*"
-            id="pinPad"
+            className="pinPad"
+            id="2"
             onChange={e => {
               let newPin = pin.toString().concat(e.target.value);
-              setPin(newPin);
+              moveOnMax(e.target.value, "3");
             }}
           />
           <input
             type="text"
             maxLength={1}
             pattern="[0-9]*"
-            id="pinPad"
+            className="pinPad"
+            id="3"
             onChange={e => {
               let newPin = pin.toString().concat(e.target.value);
-              setPin(newPin);
+              moveOnMax(e.target.value, "4");
+            }}
+          />
+          <input
+            type="text"
+            maxLength={1}
+            pattern="[0-9]*"
+            className="pinPad"
+            id="4"
+            onChange={e => {
+              let newPin = pin.toString().concat(e.target.value);
             }}
           />
         </div>
