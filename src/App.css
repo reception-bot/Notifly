@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.b-primary {
+  background: rgb(54, 74, 143);
+  color: white;
+  font-weight: 600;
+  font-size: 2rem;
+  border-radius: 5rem;
+  margin-top: 0.5rem;
+  width: 25rem;
+  height: 4rem;
+}
+
+#header_1 {
+  font-size: 7rem;
+  color: rgb(54, 74, 143);
+}
+
+#header_2 {
+  margin: 0 auto 2rem;
+  font-size: 2erm;
+  color: rgb(146, 157, 155);
+  width: 20rem;
+  height: 4rem;
+}
+
+.header-primary {
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  font-size: 2rem;
+}
