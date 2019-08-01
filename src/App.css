@@ -83,6 +83,7 @@
 .pinPad {
   /* border-color: rgb(54, 74, 143); */
   margin: 8px;
+  padding: 20px;
   border: none;
   outline: none;
   color: black;
