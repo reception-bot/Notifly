@@ -2,19 +2,17 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-<<<<<<< HEAD
     <title>Notifly</title>
-=======
     <link rel="apple-touch-icon" href="/src/images/apple-touch-icon-blue.png">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <title>ReceptBot</title>
     <link rel="manifest" href="/manifest.json" />
->>>>>>> 352d00ddf9146dde0af460942018033f781389fd
   </head>
   <body>
     <script src=“/socket.io/socket.io.js”>
         let socket = io();
         socket.on('client', data => {
+          {console.log('✅',data)}
           <div>this is data: {data}</div>
         })
       </script> <!-- added socket -->
