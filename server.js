@@ -67,6 +67,12 @@ app.post(
   }
 );
 
+
+app.use('',(err, req, res, next) => {
+  res.status(400).json(res.locals.err);
+})
+
+
 io.on("connection", socket => {
   console.log("user is connected");
   socket.on("disconnect", () => {
@@ -78,6 +84,7 @@ io.on("connection", socket => {
 const socketServer = server.listen(PORT, () => {
   const host = socketServer.address().address;
   const port = socketServer.address().port;
+
 
   console.log("Listening on port %s", port);
 });
