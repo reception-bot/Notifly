@@ -2,7 +2,7 @@ const db = require("../database/index");
 
 const insertSignin = (req, res, next, result) => {
   let visitorId = result.rows[0]._id;
-  let staffId = req.body.user.id;
+  let staffId = req.body.payload.user.id;
   let now = new Date();
   const insertSigninQuery =
     "INSERT INTO signin (visitor_id, admin_id, date) VALUES ($1, $2, $3) RETURNING *;";
@@ -16,7 +16,7 @@ const insertSignin = (req, res, next, result) => {
 module.exports = {
   //sent from use acknowledging the signed person
   postResponse(req, res, next) {
-    let visitorName = req.body.original_message.text
+    let visitorName = req.body.payload.original_message.text
       .match(/\*(.*?)\*/g);
     visitorName = visitorName[0]
       .replace(/[*]/g, '')
@@ -26,12 +26,12 @@ module.exports = {
     db.query(findVisitorQuery, [visitorName[0], visitorName[1]], (err, findVisitorResult) => {
       if (err) return err;
       const selectUsernameQuery = 'select username from staff where _id=$1;';
-      db.query(selectUsernameQuery, [req.body.user.id], (err, result) => {
+      db.query(selectUsernameQuery, [req.body.payload.user.id], (err, result) => {
         if (err) return err;
         if (result.rows[0]) {
-          if (result.rows[0].username !== req.body.user.name) {
+          if (result.rows[0].username !== req.body.payload.user.name) {
             const updateUsernameQuery = 'update staff set username=$1 where _id=$2;';
-            db.query(updateUsernameQuery, [req.body.user.name, req.body.user.id], (err, result) => {
+            db.query(updateUsernameQuery, [req.body.payload.user.name, req.body.payload.user.id], (err, result) => {
               if (err) return err;
               insertSignin(req, res, next, findVisitorResult);
             });
@@ -40,7 +40,7 @@ module.exports = {
           }
         } else {
           const insertStaffQuery = 'insert into staff (_id, username) values ($1, $2);';
-          db.query(insertStaffQuery, [req.body.user.id, req.body.user.name], (err, result) => {
+          db.query(insertStaffQuery, [req.body.payload.user.id, req.body.payload.user.name], (err, result) => {
             if (err) return err;
             insertSignin(req, res, next, findVisitorResult);
           });
