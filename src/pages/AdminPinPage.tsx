@@ -87,6 +87,7 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
             id="2"
             onChange={e => {
               let newPin = pin.toString().concat(e.target.value);
+              setPin(newPin);
               moveOnMax(e.target.value, "3");
             }}
           />
@@ -98,6 +99,7 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
             id="3"
             onChange={e => {
               let newPin = pin.toString().concat(e.target.value);
+              setPin(newPin);
               moveOnMax(e.target.value, "4");
             }}
           />
@@ -109,6 +111,7 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
             id="4"
             onChange={e => {
               let newPin = pin.toString().concat(e.target.value);
+              setPin(newPin);
             }}
           />
         </div>
