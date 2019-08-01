@@ -21,8 +21,8 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
       body: JSON.stringify(data)
     })
       .then(newdata => {
-        console.log("newdata", newdata);
-        if (newdata.status !== 404) setRedirect(true);
+        console.log("newdata", newdata.body);
+        if (newdata.status < 300) setRedirect(true);
         else alert("Wrong Pin");
       })
       .catch(err => {
@@ -37,6 +37,7 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
     return (
       <div>
         <div>PIN NUMBER</div>
+        <div className='pin-pad'>
         <input
           type="text"
           pattern="[0-9]*"
@@ -74,6 +75,7 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
             setPin(newPin);
           }}
         />
+        </div>
         <input type="submit" onClick={checkPin} value="Done" />
         <Link to="/">
           <Button buttonName="Back" />
