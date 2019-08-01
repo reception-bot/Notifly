@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import AdminPage from "../pages/AdminPage";
+import { motion } from "framer-motion";
 
 const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
   const [pin, setPin] = React.useState("");
@@ -38,66 +39,90 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
     key?: string;
   }
   // for changing input focus
-  const fireTab = () => {
-    var evt = new KeyboardEvent("keydown", { key: "Tab" });
-    document.dispatchEvent(evt);
-    console.log("triggered");
+  const moveOnMax = function(field: any, nextFieldID: any) {
+    console.log("AGGGGGH");
+    if (field.length === 1) {
+      document.getElementById(nextFieldID).focus();
+    }
   };
-
+  const pinPadMotion = {
+    hidden: { y: -10, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
   if (redirect) {
     return <AdminPage tableData={adminData}/>;
   } else {
     return (
-      <div>
-        <div>PIN NUMBER</div>
-        <div className="pin-pad">
+      <motion.div
+        className="pin-pad"
+        initial="hidden"
+        animate="visible"
+        variants={pinPadMotion}
+        transition={{
+          delay: 0.3,
+          x: { type: "spring", stiffness: 500 },
+          default: { duration: 0.3 }
+        }}
+      >
+        <div className="h-1">Enter your pin</div>
+        <div>
           <input
-            type="text"
+            type="password"
             pattern="[0-9]*"
-            id="pinPad"
+            className="pinPad"
             maxLength={1}
             onChange={e => {
               setPin(e.target.value);
-              fireTab();
-            }}
-            onKeyUp={fireTab}
-          />
-          <input
-            type="text"
-            maxLength={1}
-            pattern="[0-9]*"
-            id="pinPad"
-            onChange={e => {
-              let newPin = pin.toString().concat(e.target.value);
-              setPin(newPin);
+              moveOnMax(e.target.value, "2");
             }}
           />
           <input
-            type="text"
+            type="password"
             maxLength={1}
             pattern="[0-9]*"
-            id="pinPad"
+            className="pinPad"
+            id="2"
             onChange={e => {
               let newPin = pin.toString().concat(e.target.value);
-              setPin(newPin);
+              moveOnMax(e.target.value, "3");
             }}
           />
           <input
-            type="text"
+            type="password"
             maxLength={1}
             pattern="[0-9]*"
-            id="pinPad"
+            className="pinPad"
+            id="3"
             onChange={e => {
               let newPin = pin.toString().concat(e.target.value);
-              setPin(newPin);
+              moveOnMax(e.target.value, "4");
+            }}
+          />
+          <input
+            type="password"
+            maxLength={1}
+            pattern="[0-9]*"
+            className="pinPad"
+            id="4"
+            onChange={e => {
+              let newPin = pin.toString().concat(e.target.value);
             }}
           />
         </div>
-        <input type="submit" onClick={checkPin} value="Done" />
+        <motion.input
+          whileTap={{ scale: 0.9 }}
+          className="submit-pin"
+          type="submit"
+          onClick={checkPin}
+          value="Done"
+        />
         <Link to="/">
           <Button buttonName="Back" />
         </Link>
-      </div>
+      </motion.div>
     );
   }
 };
