@@ -43,6 +43,13 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
     }
   };
 
+  const onEnter = (event: any) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      checkPin();
+    }
+  };
+
   // animation
   const pinPadMotion = {
     hidden: { y: -10, opacity: 0 },
@@ -56,35 +63,35 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
   } else {
     return (
       <motion.div
-        className="pin-pad"
-        initial="hidden"
-        animate="visible"
+        className='pin-pad'
+        initial='hidden'
+        animate='visible'
         variants={pinPadMotion}
         transition={{
           delay: 0.3,
           x: { type: "spring", stiffness: 500 },
           default: { duration: 0.3 }
-        }}
-      >
+        }}>
         <Navigation />
         <div className="h-1">Enter your pin</div>
         <div>
           <input
-            type="password"
-            pattern="[0-9]*"
-            className="pinPad"
+            type='password'
+            pattern='[0-9]*'
+            className='pinPad'
             maxLength={1}
+            autoFocus
             onChange={e => {
               setPin(e.target.value);
               moveOnMax(e.target.value, "2");
             }}
           />
           <input
-            type="password"
+            type='password'
             maxLength={1}
-            pattern="[0-9]*"
-            className="pinPad"
-            id="2"
+            pattern='[0-9]*'
+            className='pinPad'
+            id='2'
             onChange={e => {
               let newPin = pin.toString().concat(e.target.value);
               setPin(newPin);
@@ -92,11 +99,11 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
             }}
           />
           <input
-            type="password"
+            type='password'
             maxLength={1}
-            pattern="[0-9]*"
-            className="pinPad"
-            id="3"
+            pattern='[0-9]*'
+            className='pinPad'
+            id='3'
             onChange={e => {
               let newPin = pin.toString().concat(e.target.value);
               setPin(newPin);
@@ -104,11 +111,12 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
             }}
           />
           <input
-            type="password"
+            type='password'
             maxLength={1}
-            pattern="[0-9]*"
-            className="pinPad"
-            id="4"
+            pattern='[0-9]*'
+            className='pinPad'
+            id='4'
+            onKeyUp={onEnter}
             onChange={e => {
               let newPin = pin.toString().concat(e.target.value);
               setPin(newPin);
@@ -117,10 +125,10 @@ const AdminPinPage: React.FunctionComponent<{}> = (props: any) => {
         </div>
         <motion.input
           whileTap={{ scale: 0.9 }}
-          className="submit-pin"
-          type="submit"
+          className='submit-pin'
+          type='submit'
           onClick={checkPin}
-          value="Done"
+          value='Done'
         />
       </motion.div>
     );
