@@ -1,8 +1,16 @@
 import * as React from "react";
-import { Route, Redirect } from "react-router";
+import { Link } from "react-router-dom";
+import Button from "../components/Button";
 
 function AdminPage(props: any) {
-  return <div>admin page</div>;
+  return (
+  <div>
+    <Link to="/">
+      <Button buttonName="Back" />
+    </Link>
+    Check-in Log
+  </div>
+  );
 }
 
 export default AdminPage;
