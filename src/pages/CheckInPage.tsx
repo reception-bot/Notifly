@@ -41,21 +41,21 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
       <p>please type ur name</p>
       <div>input name and stuff here</div>
       <input
-        name="first"
-        placeholder="First Name"
-        type="text"
+        name='first'
+        placeholder='First Name'
+        type='text'
         onChange={e => setFirstName(e.target.value)}
       />
       <input
-        name="last"
-        type="text"
-        placeholder="Last Name"
+        name='last'
+        type='text'
+        placeholder='Last Name'
         onChange={e => setLastName(e.target.value)}
       />
-      <Link to="/finish">
-        <input type="submit" onClick={checkIn} value="done" />
+      <Link to={{ pathname: "/finish", state: { type: firstName } }}>
+        <input type='submit' onClick={checkIn} value='Done' />
       </Link>
-      <Link to="/">
+      <Link to='/'>
         <button>Back</button>
       </Link>
     </div>
