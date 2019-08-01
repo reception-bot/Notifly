@@ -1,9 +1,12 @@
 const db = require("../database/index");
 
 const insertSignin = (req, res, next, result) => {
-  console.log('❎', result.rows[0])
+  let visitorId = 1600
+  console.log('❎', result)
+  if(result.rows[0]) {
+    visitorId = result.rows[0]._id;
+  }
   const slack = JSON.parse(req.body.payload);
-  let visitorId = result.rows[0]._id;
   let staffId = slack.user.id;
   let now = new Date();
   const insertSigninQuery =
@@ -20,7 +23,6 @@ module.exports = {
   postResponse(req, res, next) {
     const slack = JSON.parse(req.body.payload);
     // console.log('👤 Slack Response:', slack);
-  
     let visitorName = slack.original_message.text
       .match(/\*(.*?)\*/g);
     visitorName = visitorName[0]
