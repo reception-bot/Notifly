@@ -9,7 +9,6 @@ module.exports = {
     delete message.attachments[0].actions;
     message.attachments[0].text = `✓ <@${slack.user.id}> is on it`;
     message.attachments[0].color = '#4CA28B';
-    res.locals.message = message
-    return next();
+    return res.status(200).json(message);
   },
 };
