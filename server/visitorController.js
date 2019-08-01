@@ -7,7 +7,7 @@ module.exports = {
   //post visitor comes from the main page when visitor signs up.
   //firstname, lastname, reason for visiting and date should be in the body
   postVisitor(req, res, next) {
-    console.log(req.body.firstname);
+    // console.log(req.body.firstname);
     const queryString =
       "INSERT INTO visitors (firstname, lastname, reason, date) VALUES ($1, $2, $3, $4) RETURNING *";
     const values = [
@@ -28,9 +28,9 @@ module.exports = {
 
   postSlack(req, res, next) {
     const data = slackMessage(req.body, false);
-    console.log('SLACK', process.env.SLACK_URL);
+    // console.log('SLACK', process.env.SLACK_URL);
     axios.post(process.env.SLACK_URL, data)
-      .then(data => console.log('slack response:', data));
+      .then(data => /*console.log('slack response:', data)*/);
     return next();
   }
 };
