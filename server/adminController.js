@@ -2,8 +2,8 @@ const db = require("../database/index");
 
 const insertSignin = (req, res, next, result) => {
   const slack = JSON.parse(req.body.payload);
-  let visitorId = result.rows[0]._id;
   console.log('❎', result.rows[0])
+  let visitorId = result.rows[0]._id;
   let staffId = slack.user.id;
   let now = new Date();
   const insertSigninQuery =
