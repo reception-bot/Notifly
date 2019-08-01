@@ -1,6 +1,6 @@
 require("dotenv").config();
 const slackMessage = require("./slackMessage");
-const axios = require('axios');
+const axios = require("axios");
 
 module.exports = {
   updateSlackMessage(req, res, next) {
@@ -8,7 +8,8 @@ module.exports = {
     let message = slack.original_message;
     delete message.attachments[0].actions;
     message.attachments[0].text = `✓ <@${slack.user.id}> is on it`;
-    message.attachments[0].color = '#4CA28B';
-    return res.status(200).json(message);
-  },
+    message.attachments[0].color = "#4CA28B";
+    res.locals.userid = slack.user.id;
+    return next();
+  }
 };
