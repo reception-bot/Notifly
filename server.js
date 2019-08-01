@@ -21,7 +21,9 @@ app.post(
   authController.verifyAdmin,
   adminController.getAdminData,
   (req, res) => {
-    return res.redirect("/");
+    console.log("back again");
+    console.log(res.locals.result);
+    return res.status(200).send(res.locals.result);
   }
 );
 

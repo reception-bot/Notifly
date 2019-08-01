@@ -17,9 +17,8 @@ module.exports = {
 
   //admin login with pin
   getAdminData(req, res, next) {
-    const queryString = "SELECT username FROM admin WHERE pin = $1";
-    const values = [req.body.pin];
-    db.query(queryString, values, (err, result) => {
+    const queryString = "SELECT * FROM signin";
+    db.query(queryString, (err, result) => {
       if (err) {
         return err;
       }
@@ -31,7 +30,7 @@ module.exports = {
   //create a new admin
   postNewAdmin(req, res, next) {
     const queryString =
-      "INSERT INTO admin (pin, username, email) VALUES ($1, $2)";
+      "INSERT INTO admin (pin, username, email) VALUES ($1, $2, $3)";
     const values = [req.body.pin, req.body.username, req.body.email];
     db.query(queryString, values, (err, result) => {
       if (err) {

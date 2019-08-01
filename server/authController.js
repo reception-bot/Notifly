@@ -4,7 +4,7 @@ module.exports = {
     if (pin === "1600") {
       return next();
     } else {
-      return next(error);
+      return next("Wrong Pin");
     }
   }
 };
