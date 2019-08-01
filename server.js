@@ -46,9 +46,9 @@ app.post(
   slackController.updateSlackMessage,
   (req, res) => {
     let event = req.body;
-    console.log("res.locals.userid:", res.locals.userid);
-    socket.emit('slack', res.locals.userid)
-    return res.status(200).json(res.locals.userid);
+    console.log("res.locals.userid:", res.locals.message);
+    socket.emit('slack', res.locals.message)
+    return res.status(200).json(res.locals.message);
   }
 );
 
