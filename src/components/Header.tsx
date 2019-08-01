@@ -9,7 +9,7 @@ function Header(props: any) {
         admin
       </Link>
       <div>
-        <img src="" alt="Logo" />
+        <img src="/src/images/codesmith.svg" alt="Logo" />
       </div>
       <div id="header_1">{props.header1}</div>
       <div id="header_2">{props.header2}</div>

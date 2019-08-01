@@ -4,29 +4,28 @@ import Button from "../components/Button";
 
 function AdminPage(props: any) {
   let rowsData:any = [];
-  for(let i = 0; i < props.adminData.length; i++){
+  for(let i = 0; i < props.tableData.length; i++){
     rowsData.push(
     <tr>
       <th>
-        {props.adminData.firstname}
+        {props.tableData[i].firstname}
       </th>
       <th>
-        {props.adminData.lastname}
+        {props.tableData[i].lastname}
       </th>
       <th>
-        {props.adminData.username}
+        {props.tableData[i].username}
       </th>
       <th>
-        {props.adminData.reason}
+        {props.tableData[i].reason}
       </th>
       <th>
-        {props.adminData.data}
+        {props.tableData[i].date}
       </th>
     </tr>)
   }
   return (
   <div>
-  {console.log('here girl', props.tableData)}
     <Link to="/">
       <Button buttonName="Back" />
     </Link>
