@@ -1,8 +1,8 @@
 const db = require("../database/index");
 
 const insertSignin = (req, res, next, result) => {
-  let visitorId = 1600
-  console.log('❎', result)
+  let visitorId = 1600;
+  console.log('❎', result);
   if(result.rows[0]) {
     visitorId = result.rows[0]._id;
   }
