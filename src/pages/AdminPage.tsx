@@ -1,93 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import Button from "../components/Button";
 import { format } from "date-fns";
-import { Table } from "antd";
-import { ColumnProps } from "antd/lib/table";
-import { data } from '../@types/types'
-
-const columns: ColumnProps<data>[] = [
-    {
-      key: "1",
-      title: "Index",
-      dataIndex: "index",
-      // specify the condition of filtering result
-      // here is that finding the name started with `value`
-      sorter: (a, b) => {
-        if (a.index < b.index) {
-          return -1;
-        }
-        if (a.index > b.index) {
-          return 1;
-        }
-        return 0;
-      },
-      sortDirections: ["descend", "ascend"]
-    },
-    {
-      key: "2",
-      title: "Firstname",
-      dataIndex: "firstname",
-      // specify the condition of filtering result
-      // here is that finding the name started with `value`
-      sorter: (a, b) => {
-        if (a.firstname.toLowerCase() < b.firstname.toLowerCase()) {
-          return -1;
-        }
-        if (a.firstname.toLowerCase() > b.firstname.toLowerCase()) {
-          return 1;
-        }
-        return 0;
-      },
-      sortDirections: ["descend", "ascend"]
-    },
-    {
-      key: "3",
-      title: "Lastname",
-      dataIndex: "lastname",
-      // specify the condition of filtering result
-      // here is that finding the name started with `value`
-      sorter: (a, b) => {
-        if (a.lastname.toLowerCase() < b.lastname.toLowerCase()) {
-          return -1;
-        }
-        if (a.lastname.toLowerCase() > b.lastname.toLowerCase()) {
-          return 1;
-        }
-        return 0;
-      },
-      sortDirections: ["descend", "ascend"]
-    },
-    {
-      key: "4",
-      title: "Username",
-      dataIndex: "username", // This column should be consistent with other variable;
-      // sorter: (a, b) => a.username - b.username,
-      // sortDirections: ["descend", "ascend"]
-    },
-    {
-      key: "5",
-      title: "Reason",
-      dataIndex: "reason", // This column should be consistent with other variable;
-      // sorter: (a, b) => a.reason - b.reason,
-      // sortDirections: ["descend", "ascend"]
-    },
-    {
-      key: "6",
-      title: "Date",
-      dataIndex: "date",
-      sorter: (a, b) => {
-        if (a.date < b.date) {
-          return -1;
-        }
-        if (a.date > b.date) {
-          return 1;
-        }
-        return 0;
-      },
-      sortDirections: ["descend", "ascend"]
-    }
-]
 
 function AdminPage(props: any) {
   let rowsData: any = [];
@@ -98,7 +11,7 @@ function AdminPage(props: any) {
         <td>{props.tableData[i].lastname}</td>
         <td>{props.tableData[i].username}</td>
         <td>{props.tableData[i].reason}</td>
-        <td>{props.tableData[i].date}</td>
+        <td>{format(new Date(props.tableData[i].date), "MM/DD/YYYY hh:mm aa")}</td>
       </tr>
     );
   }
@@ -114,10 +27,10 @@ function AdminPage(props: any) {
         <table>
           <tbody>
             <tr className="tr-header">
-              <th>Visitor's Firstname</th>
-              <th>Visitor's Lastname</th>
-              <th>CodeSmith Collaborator</th>
-              <th>Reason for visit</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Fellow</th>
+              <th>Reason</th>
               <th>Date</th>
             </tr>
             {rowsData}
