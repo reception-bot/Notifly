@@ -194,7 +194,7 @@ header {
   /* justify-content: center; */
 
   background: rgb(255, 255, 255);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 40%, rgb(197, 202, 206) 100%);
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 1) 40%, rgb(197, 202, 206) 100%); */
 }
 
 .pinPad {

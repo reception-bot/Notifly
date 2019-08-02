@@ -1,4 +1,4 @@
-const cacheName = "news-v1";
+const cacheName = "PamBot";
 const staticAssets = ["./", "./index.html"];
 
 self.addEventListener("install", async e => {
