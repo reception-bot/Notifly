@@ -6,8 +6,9 @@ import Header from "../components/Header";
 const FinishPage: React.FunctionComponent<{}> = (props: any) => {
   // need to implement a more react-type solution
   console.log("✅", props.location.state.type);
-  window.setTimeout(() => {
-    window.location.href = "https://notifly.herokuapp.com";
+  const timeout = setTimeout(() => {
+    if (window.location.pathname === '/finish')
+      window.location.pathname = "/";
   }, 15000);
 
   let welcome = (
