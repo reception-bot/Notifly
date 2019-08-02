@@ -1,4 +1,4 @@
-const cacheName = "news-v1";
+const cacheName = "PamBot";
 const staticAssets = ["./", "./index.html"];
 
 self.addEventListener("install", async e => {
@@ -25,6 +25,12 @@ self.addEventListener("fetch", async e => {
 async function cacheFirst(req) {
   const cache = await caches.open(cacheName);
   const cached = await cache.match(req);
+  if (
+    cached.request.cache === "only-if-cached" &&
+    cached.request.mode !== "same-origin"
+  ) {
+    return;
+  }
   return cached || fetch(req);
 }
 
