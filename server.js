@@ -9,6 +9,7 @@ const visitorController = require("./server/visitorController");
 const slackController = require("./server/slackController");
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
+const WebSocket = require("ws");
 
 // This serves static files from root directory
 app.use(express.static(__dirname));
@@ -40,6 +41,7 @@ app.post("/api/postNewAdmin", adminController.postNewAdmin, (req, res) => {
  * save to DB
  * use websocket to communicate
  */
+const wss = new WebSocket.Server({ port: 8080 });
 app.post(
   "/api/postResponse",
   adminController.postResponse,
@@ -47,6 +49,15 @@ app.post(
   (req, res) => {
     let event = req.body;
     // console.log("post response:", event);
+    // drews websocket server
+
+    wss.on("connection", ws => {
+      ws.on("message", message => {
+        console.log(`Received message => ${message}`);
+      });
+      ws.send(res.locals.result);
+      ws.send("hello from route api/postResponse");
+    });
     return res.status(200).json(res.locals.result);
   }
 );
@@ -67,11 +78,9 @@ app.post(
   }
 );
 
-
-app.use('',(err, req, res, next) => {
+app.use("", (err, req, res, next) => {
   res.status(400).json(res.locals.err);
-})
-
+});
 
 io.on("connection", socket => {
   console.log("user is connected");
@@ -84,7 +93,6 @@ io.on("connection", socket => {
 const socketServer = server.listen(PORT, () => {
   const host = socketServer.address().address;
   const port = socketServer.address().port;
-
 
   console.log("Listening on port %s", port);
 });

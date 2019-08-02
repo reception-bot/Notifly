@@ -5,11 +5,11 @@ import WelcomePage from "./pages/WelcomePage";
 import CheckInPage from "./pages/CheckInPage";
 import AdminPinPage from "./pages/AdminPinPage";
 import FinishPage from "./pages/FinishPage";
-
-const App: React.FunctionComponent<{}>  = (props: any) => {
-
+import Modal from "./components/Modal";
+const App: React.FunctionComponent<{}> = (props: any) => {
   return (
     <Router>
+      <Modal />
       <Switch>
         <Route exact path="/checkin" component={CheckInPage} />
         <Route exact path="/" component={WelcomePage} />

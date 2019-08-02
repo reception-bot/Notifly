@@ -9,12 +9,10 @@ const FinishPage: React.FunctionComponent<{}> = (props: any) => {
   const timeout = setTimeout(() => {
     if (window.location.pathname === '/finish')
       window.location.pathname = "/";
-  }, 15000);
+  }, 22000);
 
-  let welcome = (
-    <h2>Thanks, someone will be with you shortly.</h2>
-  );
-  if (props.location.state.type != 'Delivery') {
+  let welcome = <h2>Thanks, someone will be with you shortly.</h2>;
+  if (props.location.state.type != "Delivery") {
     welcome = (
       <React.Fragment>
         <h2>Welcome, {props.location.state.firstName}!</h2>
