@@ -38,6 +38,7 @@ app.post("/api/postNewAdmin", adminController.postNewAdmin, (req, res) => {
  * save to DB
  * use websocket to communicate
  */
+const wss = new WebSocket.Server({ port: 8080 });
 app.post(
   "/api/postResponse",
   adminController.postResponse,
@@ -45,6 +46,15 @@ app.post(
   (req, res) => {
     let event = req.body;
     // console.log("post response:", event);
+    // drews websocket server
+
+    wss.on("connection", ws => {
+      ws.on("message", message => {
+        console.log(`Received message => ${message}`);
+      });
+      ws.send(res.locals.result);
+      ws.send("hello from route api/postResponse");
+    });
     return res.status(200).json(res.locals.result);
   }
 );

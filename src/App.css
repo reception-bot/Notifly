@@ -12,6 +12,8 @@ img {
 
 nav {
   position: fixed;
+  top: 0;
+  left: 0;
   font-size: 31px;
   color: rgba(132,142,166,0.50);
   display: flex;
@@ -64,6 +66,7 @@ a.primary, input[type=submit], button {
   border-radius: 53px;
   border: none;
   padding: 0;
+  -webkit-appearance: none;
 }
 
 a.secondary {
@@ -78,6 +81,14 @@ a.secondary {
   margin-top: 30vh;
 }
 
+#checkin input[type=submit].loading {
+  background-image: url(/src/images/loading.gif);
+  background-size: 60px;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: rgba(0,0,0,0);
+}
+
 input[type=text] {
   color: black;
   background: #EBEBEB;
@@ -88,6 +99,16 @@ input[type=text] {
   text-align: center;
   line-height: 54px;
   border: 0;
+}
+
+#failed {
+  color: #F26E27;
+  font-size: 2em;
+  display: none;
+  position: absolute;
+  width: 70%;
+  bottom: 27vh;
+  padding: 0 15%;
 }
 
 h1 {
@@ -191,7 +212,7 @@ header {
   /* justify-content: center; */
 
   background: rgb(255, 255, 255);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 40%, rgb(197, 202, 206) 100%);
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 1) 40%, rgb(197, 202, 206) 100%); */
 }
 
 .pinPad {
@@ -231,7 +252,8 @@ header {
 }
 
 .table {
-  padding: 10px 5rem;
+  width: 90vw;
+  margin: 0 auto 5vh;
 }
 
 tr:nth-child(even) {

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link, Redirect, withRouter } from "react-router-dom";
+import Navigation from "../components/Navigation";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import Input from "../components/Input";
@@ -10,9 +11,12 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
   const [event, setEvent] = React.useState(props.location.state.type);
   const [redirect, setRedirect] = React.useState();
   const [errorIsVisible, setErrorVisibility] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [isFailed, setIsFailed] = React.useState(false);
 
   // used to convert JS date to SQL timestamp type
   const checkIn = () => {
+    setIsFailed(false);
     if (fullName.length < 2) {
       console.log('incomplete name');
       setErrorVisibility(true);
@@ -20,6 +24,7 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
     } else {
       setErrorVisibility(false);
     }
+    setIsLoading(true);
     const date = new Date()
       .toISOString()
       .slice(0, 19)
@@ -38,12 +43,17 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
       },
       body: JSON.stringify(data)
     })
-      .then(newdata => {
-        setRedirect(<Redirect push to={{ pathname: "/finish", state: { firstName: fullName.split(' ')[0], type: event} }} />)
-        console.log("then:", newdata);
+      .then(response => {
+        setIsLoading(false);
+        if (response.status === 200) {
+          setRedirect(<Redirect push to={{ pathname: "/finish", state: { firstName: fullName.split(' ')[0], type: event} }} />);
+        } else {
+          setIsFailed(true);
+        }
+        console.log("response", response);
       })
       .catch(err => {
-        setRedirect(<Redirect push to={{ pathname: "/finish", state: { firstName: fullName.split(' ')[0], type: event} }} />)
+        setIsLoading(false);
         alert(err);
       });
   };
@@ -57,6 +67,7 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
 
   return (
     <div id="checkin">
+      <Navigation />
       <Header />
       <div id="instruction">
         <h4>{event}</h4>
@@ -71,7 +82,8 @@ const CheckInPage: React.FunctionComponent<{}> = (props: any) => {
         onChange={e => setFullName(e.target.value)}
         onKeyUp={onEnter}
       />
-      <input type="submit" onClick={checkIn} value="Done" />
+      <div id="failed" style={{ display: ((isFailed) ? 'block' : 'none') }}>Something went wrong: please try again or find someone nearby.</div>
+      <input type="submit" onClick={checkIn} value="Done" className={(isLoading) ? 'loading' : ''} />
       {redirect}
     </div>
   );
