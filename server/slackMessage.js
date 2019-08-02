@@ -3,7 +3,9 @@ const slackMessage = (body, isResponse) => {
   let emoji = '';
   let article = 'a ';
 
-  switch (body.reason.toLowerCase()) {
+  reason = body.reason.toLowerCase();
+
+  switch (reason) {
     case 'interview':
       emoji = '🎙';
       article = 'an ';
@@ -25,8 +27,14 @@ const slackMessage = (body, isResponse) => {
       break;
   }
 
+  let text = `*${body.firstname} ${body.lastname}* is here for ${article}*${reason}* ${emoji}`;
+
+  if (reason === 'delivery') {
+    text = `A *${reason}* needs attention at the front desk ${emoji}`;
+  }
+
   return {
-    'text': `*${body.firstname} ${body.lastname}* is here for ${article}*${body.reason}* ${emoji}`,
+    'text': text,
     "attachments": [
         {
           "text": "",
