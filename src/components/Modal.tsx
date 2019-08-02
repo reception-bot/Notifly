@@ -8,13 +8,8 @@ function Modal(props: any) {
     connection.send("test from client");
   };
   connection.onmessage = e => {
-    console.log(e.data);
+    console.log(`webmessage ${e.data}`);
     setMsg(e.data);
-    return (
-      <div>
-        <div>{msg}</div>
-      </div>
-    );
   };
 
   if (msg) {

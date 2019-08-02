@@ -41,23 +41,25 @@ app.post("/api/postNewAdmin", adminController.postNewAdmin, (req, res) => {
  * save to DB
  * use websocket to communicate
  */
+// drews websocket server
 const wss = new WebSocket.Server({ port: 8080 });
+wss.on("connection", ws => {
+  ws.on("message", message => {
+    console.log(`Received message => ${message}`);
+  });
+  // ws.send("a msg");
+  // ws.send("hello from route api/postResponse");
+});
+var message;
 app.post(
   "/api/postResponse",
   adminController.postResponse,
   slackController.updateSlackMessage,
   (req, res) => {
     let event = req.body;
-    // console.log("post response:", event);
-    // drews websocket server
-
-    wss.on("connection", ws => {
-      ws.on("message", message => {
-        console.log(`Received message => ${message}`);
-      });
-      ws.send(res.locals.result);
-      ws.send("hello from route api/postResponse");
-    });
+    console.log("post response:", event);
+    message = res.locals.result;
+    ws.send(res.locals.result);
     return res.status(200).json(res.locals.result);
   }
 );
