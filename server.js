@@ -7,6 +7,9 @@ const adminController = require("./server/adminController");
 const authController = require("./server/authController");
 const visitorController = require("./server/visitorController");
 const slackController = require("./server/slackController");
+const server = require("http").createServer(app);
+const io = require("socket.io")(server);
+
 // This serves static files from root directory
 app.use(express.static(__dirname));
 
@@ -37,11 +40,16 @@ app.post("/api/postNewAdmin", adminController.postNewAdmin, (req, res) => {
  * save to DB
  * use websocket to communicate
  */
-app.post("/api/postResponse", adminController.postResponse, slackController.updateSlackMessage, (req, res) => {
-  let event = req.body;
-  // console.log("post response:", event);
-  return res.status(200).json(res.locals.result);
-});
+app.post(
+  "/api/postResponse",
+  adminController.postResponse,
+  slackController.updateSlackMessage,
+  (req, res) => {
+    let event = req.body;
+    // console.log("post response:", event);
+    return res.status(200).json(res.locals.result);
+  }
+);
 
 /**
  * send to slack
@@ -59,9 +67,24 @@ app.post(
   }
 );
 
-const server = app.listen(PORT, () => {
-  const host = server.address().address;
-  const port = server.address().port;
+
+app.use('',(err, req, res, next) => {
+  res.status(400).json(res.locals.err);
+})
+
+
+io.on("connection", socket => {
+  console.log("user is connected");
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+  });
+  socket.on("slack", data => socket.emit("client", data));
+});
+
+const socketServer = server.listen(PORT, () => {
+  const host = socketServer.address().address;
+  const port = socketServer.address().port;
+
 
   console.log("Listening on port %s", port);
 });

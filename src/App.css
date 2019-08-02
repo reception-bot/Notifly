@@ -1,10 +1,43 @@
-.App {
+body {
   text-align: center;
+  display: flex;
   align-content: center;
   justify-content: center;
-  font-size: 2rem;
-  display: flex;
   flex-direction: row;
+}
+
+img {
+  margin: 35px auto 20px;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 31px;
+  color: rgba(132,142,166,0.50);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: calc(100% - 77px);
+  margin: 32px 45px 32px 42px;
+  color: rgba(132,142,166,0.50);
+}
+
+#admin-button {
+  color: rgba(0, 0, 0, 0.04);
+}
+
+a {
+  text-decoration: none;
+}
+
+nav a {
+  color: inherit;
+}
+
+#instruction {
+  margin: 80px 0 10px;
 }
 
 .b-primary {
@@ -19,20 +52,101 @@
   outline: none;
 }
 
-#header_1 {
-  font-size: 7rem;
+a.primary, input[type=submit], button {
+  display: flex;
+  width: 520px;
+  height: 100px;
+  margin: 10px auto;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.81em;
+  color: white;
+  background: #47619F;
+  border-radius: 53px;
+  border: none;
+  padding: 0;
+  -webkit-appearance: none;
+}
+
+a.secondary {
+  display: block;
+  margin: 25px auto 0;
+  font-size: 35px;
+  color: #848EA6;
+  text-transform: uppercase;
+}
+
+#checkin input[type=submit] {
+  margin-top: 30vh;
+}
+
+input[type=text] {
+  color: black;
+  background: #EBEBEB;
+  border-radius: 8px;
+  width: 610px;
+  height: 110px;
+  font-size: 45px;
+  text-align: center;
+  line-height: 54px;
+  border: 0;
+}
+
+h1 {
+  font-size: 7.2em;
   color: rgb(54, 74, 143);
+  margin: 0 auto;
+  letter-spacing: 2px;
+  line-height: 100px;
+  font-weight: 500;
 }
 
-#header_2 {
-  margin: 0 auto 2rem;
-  font-size: 2erm;
-  color: rgb(146, 157, 155);
-  width: 20rem;
-  height: 4rem;
+h2 {
+  font-size: 4.44em;
+  color: #091D4E;
+  margin: 0 auto;
+  font-weight: 600;
 }
 
-.header-primary {
+h3 {
+  font-size: 4em;
+  color: #404C67;
+  margin: 20px 30px;
+  font-weight: 500;
+}
+
+h4 {
+  margin: 62px auto 33px;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #848EA6;
+  max-width: 460px;
+  letter-spacing: 1px;
+  line-height: 40px;
+}
+
+h4.primary {
+  color: #091D4E;
+}
+
+h4.error {
+  color: #F26E27;
+  opacity: 0;
+  transition: opacity 0.1s linear;
+}
+
+#checkin h4 {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+#finished img {
+  margin: 270px auto 50px;
+}
+
+header {
+  width: 100vw;
   text-align: center;
   align-content: center;
   justify-content: center;
