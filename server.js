@@ -65,13 +65,6 @@ app.post(
   }
 );
 
-// io.on("connection", socket => {
-//   console.log("user is connected");
-//   socket.on("disconnect", () => {
-//     console.log("user disconnected");
-//   });
-//   socket.on("slack", data => socket.emit("client", data));
-// });
 
 const server = app.listen(PORT, () => {
   const host = server.address().address;

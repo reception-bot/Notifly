@@ -10,16 +10,6 @@
   </head>
   <body>
       <div id="app"></div>
-    <script>
-        let webSocket = new WebSocket('ws://localhost:3000');
-        webSocket.onopen = function() {
-          console.log('sever and socket connection succeeded')
-        }
-        webSocket.onmessage = function (event) {
-          console.log(event.data);
-          webSocket.send('this is from client')
-        }
-      </script>
 
     <script src="./node_modules/react/umd/react.development.js"></script>
     <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
