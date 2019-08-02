@@ -11,7 +11,7 @@ img {
 }
 
 nav {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   font-size: 31px;
@@ -81,6 +81,14 @@ a.secondary {
   margin-top: 30vh;
 }
 
+#checkin input[type=submit].loading {
+  background-image: url(/src/images/loading.gif);
+  background-size: 60px;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: rgba(0,0,0,0);
+}
+
 input[type=text] {
   color: black;
   background: #EBEBEB;
@@ -91,6 +99,16 @@ input[type=text] {
   text-align: center;
   line-height: 54px;
   border: 0;
+}
+
+#failed {
+  color: #F26E27;
+  font-size: 2em;
+  display: none;
+  position: absolute;
+  width: 70%;
+  bottom: 27vh;
+  padding: 0 15%;
 }
 
 h1 {
@@ -234,7 +252,8 @@ header {
 }
 
 .table {
-  padding: 10px 5rem;
+  width: 90vw;
+  margin: 0 auto 5vh;
 }
 
 tr:nth-child(even) {
