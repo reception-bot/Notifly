@@ -9,17 +9,18 @@
     <link rel="manifest" href="/manifest.json" />
   </head>
   <body>
-    <!-- <script src=“/socket.io/socket.io.js”>
-        let socket = io();
-        socket.on('client', data => {
-          {console.log('✅',data)}
-          <div>this is data: {data}</div>
-        })
-      </script>  -->
-      <!-- added socket -->
-    <div id="app"></div>
+      <div id="app"></div>
+    <script>
+        let webSocket = new WebSocket('ws://localhost:3000');
+        webSocket.onopen = function() {
+          console.log('sever and socket connection succeeded')
+        }
+        webSocket.onmessage = function (event) {
+          console.log(event.data);
+          webSocket.send('this is from client')
+        }
+      </script>
 
-    <!-- Dependencies -->
     <script src="./node_modules/react/umd/react.development.js"></script>
     <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
 

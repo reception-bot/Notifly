@@ -7,8 +7,6 @@ const adminController = require("./server/adminController");
 const authController = require("./server/authController");
 const visitorController = require("./server/visitorController");
 const slackController = require("./server/slackController");
-const server = require("http").createServer(app);
-const io = require("socket.io")(server);
 
 // This serves static files from root directory
 app.use(express.static(__dirname));
@@ -67,17 +65,18 @@ app.post(
   }
 );
 
-io.on("connection", socket => {
-  console.log("user is connected");
-  socket.on("disconnect", () => {
-    console.log("user disconnected");
-  });
-  socket.on("slack", data => socket.emit("client", data));
-});
+// io.on("connection", socket => {
+//   console.log("user is connected");
+//   socket.on("disconnect", () => {
+//     console.log("user disconnected");
+//   });
+//   socket.on("slack", data => socket.emit("client", data));
+// });
 
-const socketServer = server.listen(PORT, () => {
-  const host = socketServer.address().address;
-  const port = socketServer.address().port;
+const server = app.listen(PORT, () => {
+  const host = server.address().address;
+  const port = server.address().port;
 
   console.log("Listening on port %s", port);
 });
+
