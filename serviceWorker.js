@@ -25,12 +25,6 @@ self.addEventListener("fetch", async e => {
 async function cacheFirst(req) {
   const cache = await caches.open(cacheName);
   const cached = await cache.match(req);
-  if (
-    cached.request.cache === "only-if-cached" &&
-    cached.request.mode !== "same-origin"
-  ) {
-    return;
-  }
   return cached || fetch(req);
 }
 
