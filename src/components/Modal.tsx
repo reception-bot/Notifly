@@ -1,5 +1,5 @@
 import * as React from "react";
-const url = "ws://localhost:8080";
+const url = "wss://notifly.herokuapp.com:8080";
 const connection = new WebSocket(url);
 
 function Modal(props: any) {
