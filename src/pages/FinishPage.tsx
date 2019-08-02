@@ -7,13 +7,12 @@ const FinishPage: React.FunctionComponent<{}> = (props: any) => {
   // need to implement a more react-type solution
   console.log("✅", props.location.state.type);
   window.setTimeout(() => {
+    // window.location.href = "http://localhost:3000";
     window.location.href = "https://notifly.herokuapp.com";
   }, 15000);
 
-  let welcome = (
-    <h2>Thanks, someone will be with you shortly.</h2>
-  );
-  if (props.location.state.type != 'Delivery') {
+  let welcome = <h2>Thanks, someone will be with you shortly.</h2>;
+  if (props.location.state.type != "Delivery") {
     welcome = (
       <React.Fragment>
         <h2>Welcome, {props.location.state.firstName}!</h2>
