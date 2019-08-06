@@ -1,5 +1,5 @@
 import * as React from "react";
-const url = "ws://localhost:8080";
+const url = "wss://notifly.herokuapp.com:8080";
 const connection = new WebSocket(url);
 
 function Modal(props: any) {
@@ -8,13 +8,8 @@ function Modal(props: any) {
     connection.send("test from client");
   };
   connection.onmessage = e => {
-    console.log(e.data);
+    console.log(`webmessage ${e.data}`);
     setMsg(e.data);
-    return (
-      <div>
-        <div>{msg}</div>
-      </div>
-    );
   };
 
   if (msg) {
