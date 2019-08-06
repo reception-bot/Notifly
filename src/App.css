@@ -1,0 +1,268 @@
+body {
+  text-align: center;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+img {
+  margin: 35px auto 20px;
+  height: 176px;
+  max-height: 40vh;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 31px;
+  color: rgba(132,142,166,0.50);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: calc(100% - 77px);
+  margin: 32px 45px 32px 42px;
+  color: rgba(132,142,166,0.50);
+}
+
+#admin-button {
+  color: rgba(0, 0, 0, 0.04);
+}
+
+a {
+  text-decoration: none;
+}
+
+nav a {
+  color: inherit;
+}
+
+#instruction {
+  margin: 80px 0 10px;
+}
+
+.b-primary {
+  background: rgb(54, 74, 143);
+  color: white;
+  font-weight: 600;
+  font-size: 2rem;
+  border-radius: 5rem;
+  margin-top: 0.5rem;
+  width: 25rem;
+  height: 4rem;
+  outline: none;
+}
+
+a.primary, input[type=submit], button {
+  display: flex;
+  width: 520px;
+  height: 100px;
+  margin: 10px auto;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.81em;
+  color: white;
+  background: #47619F;
+  border-radius: 53px;
+  border: none;
+  padding: 0;
+  -webkit-appearance: none;
+}
+
+a.secondary {
+  display: block;
+  margin: 25px auto 0;
+  font-size: 35px;
+  color: #848EA6;
+  text-transform: uppercase;
+}
+
+#checkin input[type=submit] {
+  margin-top: 30vh;
+}
+
+#checkin input[type=submit].loading {
+  background-image: url(/src/images/loading.gif);
+  background-size: 60px;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: rgba(0,0,0,0);
+}
+
+input[type=text] {
+  color: black;
+  background: #EBEBEB;
+  border-radius: 8px;
+  width: 610px;
+  height: 110px;
+  font-size: 45px;
+  text-align: center;
+  line-height: 54px;
+  border: 0;
+}
+
+#failed {
+  color: #F26E27;
+  font-size: 2em;
+  display: none;
+  position: absolute;
+  width: 70%;
+  bottom: 27vh;
+  padding: 0 15%;
+}
+
+h1 {
+  font-size: 7.2em;
+  color: rgb(54, 74, 143);
+  margin: 0 auto;
+  letter-spacing: 2px;
+  line-height: 100px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 4.44em;
+  color: #091D4E;
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 4em;
+  color: #404C67;
+  margin: 20px 30px;
+  font-weight: 500;
+}
+
+h4 {
+  margin: 62px auto 33px;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #848EA6;
+  max-width: 460px;
+  letter-spacing: 1px;
+  line-height: 40px;
+}
+
+h4.primary {
+  color: #091D4E;
+}
+
+h4.error {
+  color: #F26E27;
+  opacity: 0;
+  transition: opacity 0.1s linear;
+}
+
+#checkin h4 {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+#finished img {
+  margin: 270px auto 50px;
+}
+
+header {
+  width: 100vw;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.h-1 {
+  font-weight: 200;
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+.submit-pin {
+  border: 3px solid rgb(54, 74, 143);
+  outline: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 2rem;
+  border-radius: 5rem;
+  margin-top: 2rem;
+  width: 25rem;
+  height: 4rem;
+  color: rgb(54, 74, 143);
+  background: white;
+}
+
+.submit-back {
+  color: gray;
+  font-size: 1.5rem;
+  outline: none;
+  margin: 1rem;
+  border: none;
+}
+
+/* for entire AdminPinPad div */
+.pin-pad {
+  padding-top: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: auto 0; */
+  height: 75vh;
+  width: 100vw;
+  /* background: red; */
+  /* justify-content: center; */
+
+  background: rgb(255, 255, 255);
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 1) 40%, rgb(197, 202, 206) 100%); */
+}
+
+.pinPad {
+  /* border-color: rgb(54, 74, 143); */
+  margin: 8px;
+  padding: 20px;
+  border: none;
+  outline: none;
+  color: black;
+  background: #e3e3e3;
+  font-size: 4rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 1rem;
+  text-align: center;
+  transition: 100ms ease;
+}
+
+.pinPad:focus {
+  background: #c9c9c9;
+}
+
+.back-button {
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.h-admin {
+  font-size: 1rem;
+  font-weight: 200 !important;
+  margin: 5px;
+}
+
+.tr-header {
+  font-size: 1.2rem;
+  font-weight: 600 !important;
+}
+
+table {
+  width: 90vw;
+  margin: 0 auto 5vh;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.content {
+  font-size: 1rem;
+  font-weight: 200 !important;
+}

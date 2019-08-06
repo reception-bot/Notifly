@@ -4,7 +4,7 @@ function Button(props: any) {
   console.log(props);
   return (
     <div>
-      <button>{props.buttonName}</button>
+      <button className="b-primary">{props.buttonName}</button>
     </div>
   );
 }

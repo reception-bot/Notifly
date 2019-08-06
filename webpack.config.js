@@ -23,7 +23,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname),
     compress: true,
-    port: 9000
+    port: 3000
   },
   module: {
     rules: [
@@ -35,6 +35,10 @@ module.exports = {
             loader: "ts-loader"
           }
         ]
+      },
+      {
+        test: /\.css$/,
+        loaders: ["style-loader", "css-loader"]
       },
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       {
