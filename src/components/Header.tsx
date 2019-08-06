@@ -4,7 +4,7 @@ const Header = (props: any) => {
 
   return (
     <header>
-      <img src="/src/images/codesmith.svg" alt="Codesmith logo" />
+      <img src="/src/images/logo.svg" alt="Company logo" />
     </header>
   );
 

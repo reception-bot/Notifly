@@ -8,6 +8,8 @@ body {
 
 img {
   margin: 35px auto 20px;
+  height: 176px;
+  max-height: 40vh;
 }
 
 nav {
