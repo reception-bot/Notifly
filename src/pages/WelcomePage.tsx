@@ -6,7 +6,7 @@ import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
 
 function WelcomePage(props: any) {
   let state = {
-    head1: "Welcome to Codesmith",
+    head1: "Welcome to <Name>",
     head2: "To check in, tap the reason for your visit:",
     logo: ""
   };
