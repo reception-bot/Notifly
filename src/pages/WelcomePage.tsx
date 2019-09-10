@@ -10,7 +10,7 @@ function WelcomePage(props: any) {
   const [isLoading, setIsLoading] = React.useState(false);
 
   let state = {
-    head1: "Welcome",
+    head1: "Welcome to <Name>",
     head2: "To check in, tap the reason for your visit:"
   };
 
