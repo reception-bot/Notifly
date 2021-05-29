@@ -41,7 +41,7 @@
     "socket.io": "^2.2.0",
     "style-loader": "^0.23.1",
     "styled-components": "^4.3.2",
-    "ws": "^7.1.1"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.136",
